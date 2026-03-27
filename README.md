@@ -5,7 +5,7 @@ A small static FAQ portal about nginx, served by nginx and packaged as a Docker 
 ## What is inside
 
 - `site/` contains the interlinked HTML pages plus shared CSS and JavaScript.
-- `nginx/default.conf` provides a minimal production config for static hosting.
+- `nginx.conf` provides the nginx runtime configuration for the container.
 - `Dockerfile` builds an image that serves the site on port `80`.
 - `.github/workflows/docker-publish.yml` builds the image in GitHub Actions and pushes it to GitHub Container Registry on `main`.
 
@@ -20,10 +20,10 @@ Then visit `http://127.0.0.1:8080/`.
 
 ## Pages
 
-- `index.html` overview and navigation hub
-- `faq.html` searchable FAQ
-- `getting-started.html` quick start guide
-- `operations.html` operational notes and troubleshooting
+- `site/index.html` overview and navigation hub
+- `site/pages/configuration.html` searchable configuration FAQ
+- `site/pages/performance.html` searchable performance and proxy FAQ
+- `site/assets/search.js` shared JavaScript for scroll-to-top and live search
 
 ## Container image publishing
 

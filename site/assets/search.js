@@ -3,6 +3,9 @@ const faqItems = Array.from(document.querySelectorAll(".faq-item"));
 const searchStatus = document.querySelector("[data-search-status]");
 const emptyState = document.querySelector("[data-empty-state]");
 const scrollTopButton = document.querySelector("[data-scroll-top]");
+const navLinks = Array.from(
+  document.querySelectorAll(".nav a, .site-nav a"),
+);
 
 const normalize = (value) =>
   value
@@ -48,6 +51,19 @@ const toggleScrollButton = () => {
   scrollTopButton.hidden = window.scrollY < 260;
 };
 
+const highlightCurrentNav = () => {
+  if (navLinks.length === 0) {
+    return;
+  }
+
+  const currentPath = window.location.pathname.split("/").pop() || "index.html";
+
+  navLinks.forEach((link) => {
+    const href = (link.getAttribute("href") || "").split("/").pop();
+    link.classList.toggle("is-active", href === currentPath);
+  });
+};
+
 if (searchInput) {
   searchInput.addEventListener("input", updateSearch);
   updateSearch();
@@ -61,3 +77,5 @@ if (scrollTopButton) {
   window.addEventListener("scroll", toggleScrollButton, { passive: true });
   toggleScrollButton();
 }
+
+highlightCurrentNav();

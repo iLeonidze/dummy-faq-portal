@@ -91,6 +91,9 @@ pre code {
 }
 
 .brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   color: var(--text);
   font-size: 1.1rem;
   font-weight: 700;
@@ -98,7 +101,52 @@ pre code {
   text-decoration: none;
 }
 
+.brand-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #f8fbf8;
+  font-size: 1rem;
+}
+
+.brand-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.brand-copy strong {
+  color: var(--text);
+  font-size: 0.96rem;
+}
+
+.shell {
+  width: min(100% - 2rem, var(--max-width));
+  margin: 0 auto;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+}
+
 .site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.nav {
   display: flex;
   flex-wrap: wrap;
   gap: 0.45rem;
@@ -114,6 +162,21 @@ pre code {
 
 .site-nav a:hover,
 .site-nav a.is-active {
+  background: var(--accent-soft);
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.nav a {
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.nav a:hover,
+.nav a.is-active {
   background: var(--accent-soft);
   color: var(--accent);
   transform: translateY(-1px);
@@ -145,6 +208,33 @@ pre code {
 .hero {
   padding-top: clamp(2rem, 5vw, 4rem);
   padding-bottom: clamp(2rem, 5vw, 4rem);
+}
+
+.hero-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(250px, 0.85fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.hero-copy p {
+  max-width: 58ch;
+  margin: 1rem 0 0;
+  color: var(--muted);
+}
+
+.hero-panel,
+.callout {
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--panel), #fbf8f1);
+}
+
+.hero-panel ul,
+.callout ul {
+  margin: 0.75rem 0 0;
+  padding-left: 1.15rem;
 }
 
 .hero h1,
@@ -215,6 +305,16 @@ pre code {
   margin-bottom: 1rem;
 }
 
+.page-meta,
+.faq-meta {
+  margin: 0 0 0.55rem;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 .card-grid,
 .faq-grid {
   display: grid;
@@ -229,8 +329,21 @@ pre code {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
+.faq-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.85fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.faq-column {
+  display: grid;
+  gap: 1rem;
+}
+
 .card,
 .faq-card,
+.faq-item,
 .note-panel,
 .search-panel {
   padding: 1.2rem;
@@ -245,22 +358,30 @@ pre code {
 }
 
 .card,
-.faq-card {
+.faq-card,
+.faq-item {
   transition: transform 180ms ease, border-color 180ms ease;
 }
 
 .card:hover,
-.faq-card:hover {
+.faq-card:hover,
+.faq-item:hover {
   transform: translateY(-2px);
   border-color: #bfb29b;
 }
 
 .card p,
 .faq-card p,
+.faq-item p,
 .section p,
 .note-panel p,
 .site-footer p {
   margin: 0.75rem 0 0;
+}
+
+.faq-item h3 {
+  margin: 0;
+  line-height: 1.18;
 }
 
 .text-link {
@@ -315,6 +436,31 @@ pre code {
 
 .search-meta {
   color: var(--muted);
+}
+
+.search-status {
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+}
+
+.related-links,
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 0.8rem;
+}
+
+.ghost-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fffefb;
+  color: var(--accent);
+  text-decoration: none;
 }
 
 .empty-state {
@@ -387,8 +533,18 @@ pre code {
     grid-template-columns: 1fr;
   }
 
+  .hero-card,
+  .faq-layout {
+    grid-template-columns: 1fr;
+  }
+
   .hero h1 {
     max-width: 100%;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .scroll-top {
