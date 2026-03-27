@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dummy FAQ Portal | Private status</title>
+  <meta name="description" content="Private status page protected by nginx basic auth.">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <script src="../assets/search.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="../index.html">Dummy FAQ Portal</a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../faq.html">FAQ</a>
+        <a href="../getting-started.html">Getting Started</a>
+        <a href="../operations.html">Operations</a>
+        <a href="../private/" data-nav-match="/private/">Protected</a>
+      </nav>
+    </header>
+
+    <main class="content">
+      <section class="section">
+        <p class="eyebrow">Private status</p>
+        <h1>Protected route coverage</h1>
+        <div class="card-grid">
+          <article class="card">
+            <p class="card-label">Public paths</p>
+            <h3>Expected to work without auth</h3>
+            <p><code>/</code>, <code>/faq.html</code>, <code>/getting-started.html</code>, <code>/operations.html</code>, and the deep dives under <code>/pages/</code>.</p>
+          </article>
+          <article class="card">
+            <p class="card-label">Protected paths</p>
+            <h3>Expected to challenge with 401 first</h3>
+            <p><code>/private/</code>, <code>/private/status.html</code>, and <code>/private/runbook.html</code>.</p>
+          </article>
+          <article class="card">
+            <p class="card-label">Health</p>
+            <h3>Expected to return 200 quickly</h3>
+            <p><code>/healthz</code> is unauthenticated and exists specifically for service and container health checks.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Return to the <a href="runbook.html">private runbook</a> if you need the verification checklist.</p>
+    </footer>
+
+    <button class="scroll-top" type="button" data-scroll-top hidden aria-label="Scroll back to top">Top</button>
+  </div>
+</body>
+</html>

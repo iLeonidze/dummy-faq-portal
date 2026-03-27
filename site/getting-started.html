@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dummy FAQ Portal | Getting started with the demo</title>
+  <meta name="description" content="Getting started guide for the dummy nginx FAQ portal and its public routes.">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="assets/search.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="index.html">Dummy FAQ Portal</a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="faq.html">FAQ</a>
+        <a href="getting-started.html">Getting Started</a>
+        <a href="operations.html">Operations</a>
+        <a href="private/" data-nav-match="/private/">Protected</a>
+      </nav>
+    </header>
+
+    <main class="content">
+      <section class="section">
+        <p class="eyebrow">Getting started</p>
+        <h1>How this dummy service is structured.</h1>
+        <p class="lead">
+          Use this page when you want the filesystem layout, public routes,
+          health endpoint, and the reasoning behind the simple nginx setup.
+        </p>
+      </section>
+
+      <section class="faq-layout">
+        <div class="faq-column">
+          <article class="faq-item" data-search="routes faq html getting started operations private pages deep dives">
+            <p class="faq-meta">Route design</p>
+            <h3>Which public pages are expected to work directly?</h3>
+            <p>
+              The primary public entry points are <code>/</code>,
+              <code>/faq.html</code>, <code>/getting-started.html</code>, and
+              <code>/operations.html</code>. The deeper reference pages under
+              <code>/pages/</code> stay available as extended reading.
+            </p>
+          </article>
+
+          <article class="faq-item" data-search="healthz health endpoint kubernetes probe container liveness">
+            <p class="faq-meta">Health probes</p>
+            <h3>Where should a container or Kubernetes probe point?</h3>
+            <p>
+              The image exposes <code>/healthz</code>, which returns a plain
+              <code>200 OK</code> response. That avoids tying health checks to a
+              specific HTML page and keeps the probe contract stable.
+            </p>
+          </article>
+
+          <article class="faq-item" data-search="basic auth private status runbook credentials test test">
+            <p class="faq-meta">Protected demo pages</p>
+            <h3>Which pages require basic auth?</h3>
+            <p>
+              The protected demo section is mounted at <code>/private/</code>.
+              The included protected pages are <code>/private/</code>,
+              <code>/private/status.html</code>, and
+              <code>/private/runbook.html</code>. The hardcoded demo credentials
+              are <code>test/test</code>.
+            </p>
+          </article>
+
+          <article class="faq-item" data-search="dockerfile nginx conf htpasswd static assets copy">
+            <p class="faq-meta">Image layout</p>
+            <h3>What does the image copy into the container?</h3>
+            <p>
+              The Docker image copies a custom <code>nginx.conf</code>, the
+              static site under <code>/usr/share/nginx/html/</code>, and a
+              dedicated <code>.htpasswd</code> file used to protect the
+              <code>/private/</code> routes.
+            </p>
+          </article>
+
+          <article class="faq-item" data-search="static files root try files direct html routes 404">
+            <p class="faq-meta">404 prevention</p>
+            <h3>Why were the missing page routes a problem?</h3>
+            <p>
+              nginx serves static files literally. If
+              <code>/faq.html</code> or <code>/operations.html</code> do not
+              exist in the image, there is nothing to return. The fix is to ship
+              the files that the portal promises and link them consistently.
+            </p>
+          </article>
+
+          <article class="faq-item" data-search="next read configuration performance pages official docs">
+            <p class="faq-meta">Next steps</p>
+            <h3>Where should I continue after this page?</h3>
+            <p>
+              Start with <a href="faq.html">FAQ</a> for the searchable overview,
+              then move to <a href="operations.html">Operations</a> or the deeper
+              references under <a href="pages/configuration.html">Configuration</a>
+              and <a href="pages/performance.html">Performance</a>.
+            </p>
+          </article>
+        </div>
+
+        <aside class="search-panel">
+          <label class="search-label" for="faq-search">Search this page</label>
+          <input
+            id="faq-search"
+            class="search-input"
+            type="search"
+            placeholder="Try: healthz, private, docker"
+            data-faq-search
+            autocomplete="off">
+          <p class="search-status" data-search-status></p>
+
+          <div class="note-panel">
+            <h3>Quick links</h3>
+            <ul class="plain-list">
+              <li><a href="faq.html">Searchable FAQ</a></li>
+              <li><a href="operations.html">Operations guide</a></li>
+              <li><a href="private/">Protected demo</a></li>
+            </ul>
+          </div>
+
+          <p class="empty-state" data-empty-state hidden>No entries match that search on this page.</p>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Looking for runtime details? Continue to <a href="operations.html">Operations</a>.</p>
+    </footer>
+
+    <button class="scroll-top" type="button" data-scroll-top hidden aria-label="Scroll back to top">Top</button>
+  </div>
+</body>
+</html>

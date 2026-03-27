@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dummy FAQ Portal | Private runbook</title>
+  <meta name="description" content="Private verification checklist protected by nginx basic auth.">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <script src="../assets/search.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="../index.html">Dummy FAQ Portal</a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../faq.html">FAQ</a>
+        <a href="../getting-started.html">Getting Started</a>
+        <a href="../operations.html">Operations</a>
+        <a href="../private/" data-nav-match="/private/">Protected</a>
+      </nav>
+    </header>
+
+    <main class="content">
+      <section class="section">
+        <p class="eyebrow">Private runbook</p>
+        <h1>Verification checklist for the demo service</h1>
+        <ol class="step-list">
+          <li>Open <code>/</code> and verify that the route map renders.</li>
+          <li>Open <code>/faq.html</code>, <code>/getting-started.html</code>, and <code>/operations.html</code> directly and confirm they do not 404.</li>
+          <li>Hit <code>/healthz</code> and verify that the response is <code>200 OK</code>.</li>
+          <li>Open <code>/private/</code> and verify that nginx requests credentials.</li>
+          <li>Authenticate with <code>test/test</code> and confirm that <code>/private/status.html</code> and <code>/private/runbook.html</code> render normally.</li>
+        </ol>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Return to the <a href="status.html">private status page</a> for route expectations.</p>
+    </footer>
+
+    <button class="scroll-top" type="button" data-scroll-top hidden aria-label="Scroll back to top">Top</button>
+  </div>
+</body>
+</html>

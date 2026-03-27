@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dummy FAQ Portal | Searchable nginx FAQ</title>
+  <meta name="description" content="Searchable FAQ entries covering nginx basics, configuration, reverse proxying, and troubleshooting.">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="assets/search.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="index.html">Dummy FAQ Portal</a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="faq.html">FAQ</a>
+        <a href="getting-started.html">Getting Started</a>
+        <a href="operations.html">Operations</a>
+        <a href="private/" data-nav-match="/private/">Protected</a>
+      </nav>
+    </header>
+
+    <main class="content">
+      <section class="section">
+        <p class="eyebrow">Searchable reference</p>
+        <h1>nginx FAQ</h1>
+        <p class="lead">
+          Search updates live as you type. Try terms like <code>reload</code>,
+          <code>reverse proxy</code>, <code>502</code>, <code>logs</code>, or
+          <code>static</code>.
+        </p>
+
+        <div class="search-panel">
+          <label class="search-label" for="faq-search">Search the FAQ</label>
+          <input
+            id="faq-search"
+            class="search-input"
+            type="search"
+            placeholder="Filter questions and answers in real time"
+            data-faq-search
+            autocomplete="off">
+          <p class="search-status" data-search-status></p>
+        </div>
+      </section>
+
+      <section class="faq-grid">
+        <article class="faq-item" data-search="what is nginx reverse proxy load balancer cache static content">
+          <p class="faq-meta">Basics</p>
+          <h3>What is nginx typically used for?</h3>
+          <p>
+            nginx is commonly used as a web server, reverse proxy, load balancer,
+            and HTTP cache. In practice it often sits in front of an application,
+            terminates client connections, and serves static assets directly.
+          </p>
+          <a class="text-link" href="getting-started.html">Continue in Getting Started</a>
+        </article>
+
+        <article class="faq-item" data-search="serve static files html css js images root index">
+          <p class="faq-meta">Static hosting</p>
+          <h3>Can nginx host a static site by itself?</h3>
+          <p>
+            Yes. A static HTML site is one of the simplest nginx workloads. This
+            demo portal is exactly that: static pages, shared CSS and JS, and no
+            application runtime behind them.
+          </p>
+          <a class="text-link" href="getting-started.html">View the file layout</a>
+        </article>
+
+        <article class="faq-item" data-search="config location nginx conf conf d include server blocks">
+          <p class="faq-meta">Configuration</p>
+          <h3>Where does nginx configuration usually live?</h3>
+          <p>
+            The main file is often called <code>nginx.conf</code>, commonly under
+            <code>/etc/nginx/</code>. Larger setups include additional config
+            snippets from dedicated directories so server blocks stay readable.
+          </p>
+          <a class="text-link" href="pages/configuration.html">Open the configuration deep dive</a>
+        </article>
+
+        <article class="faq-item" data-search="validate config nginx -t reload without restart zero downtime">
+          <p class="faq-meta">Validation</p>
+          <h3>How should I validate changes before a reload?</h3>
+          <p>
+            Run <code>nginx -t</code> first. Once syntax and includes pass,
+            reload the master process so the updated config is applied without the
+            disruption of a full stop/start cycle.
+          </p>
+          <a class="text-link" href="operations.html">See the operations guide</a>
+        </article>
+
+        <article class="faq-item" data-search="reverse proxy upstream backend services app server">
+          <p class="faq-meta">Proxying</p>
+          <h3>Why put nginx in front of an app?</h3>
+          <p>
+            It can centralize TLS termination, serve static files, normalize
+            request handling, and forward dynamic traffic to upstream services.
+            That gives the application fewer edge-facing concerns to manage.
+          </p>
+          <a class="text-link" href="operations.html">Read the proxy notes</a>
+        </article>
+
+        <article class="faq-item" data-search="access log error log troubleshooting 404 502">
+          <p class="faq-meta">Troubleshooting</p>
+          <h3>Where do I start when something returns 404 or 502?</h3>
+          <p>
+            For 404s, check whether the request path maps to a real file or
+            location rule. For 502s, inspect upstream health, ports, timeouts,
+            and the error log to see whether nginx could reach the backend.
+          </p>
+          <a class="text-link" href="operations.html">Go to troubleshooting</a>
+        </article>
+      </section>
+
+      <p class="empty-state" data-empty-state hidden>No entries match that search. Try a broader term.</p>
+    </main>
+
+    <footer class="site-footer">
+      <p>Need the operational follow-up? Jump to <a href="operations.html">Operations</a>.</p>
+    </footer>
+
+    <button class="scroll-top" type="button" data-scroll-top hidden aria-label="Scroll back to top">Top</button>
+  </div>
+</body>
+</html>

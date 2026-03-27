@@ -1,6 +1,7 @@
-FROM nginx:stable-alpine
+FROM nginx:1.29-alpine
 
 COPY nginx.conf /etc/nginx/nginx.conf
+COPY basic-auth.htpasswd /etc/nginx/.htpasswd
 COPY site/ /usr/share/nginx/html/
 
 EXPOSE 80

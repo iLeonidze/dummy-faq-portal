@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dummy FAQ Portal | Protected demo area</title>
+  <meta name="description" content="Protected demo pages guarded by nginx basic auth.">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <script src="../assets/search.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="../index.html">Dummy FAQ Portal</a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../faq.html">FAQ</a>
+        <a href="../getting-started.html">Getting Started</a>
+        <a href="../operations.html">Operations</a>
+        <a href="../private/" data-nav-match="/private/">Protected</a>
+      </nav>
+    </header>
+
+    <main class="content">
+      <section class="hero">
+        <p class="eyebrow">Protected demo</p>
+        <h1>You are inside the basic-auth area.</h1>
+        <p class="lead">
+          This section is intentionally protected by nginx basic auth to support
+          dummy private routes in development and test environments.
+        </p>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Protected pages</p>
+          <h2>Use these pages to verify auth in a browser or through tests.</h2>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <p class="card-label">Status</p>
+            <h3>Private service status</h3>
+            <p>Static internal-style notes about route coverage and what the portal is expected to expose.</p>
+            <a class="text-link" href="status.html">Open status page</a>
+          </article>
+          <article class="card">
+            <p class="card-label">Runbook</p>
+            <h3>Private runbook</h3>
+            <p>A small operational checklist for verifying auth, public pages, and the health endpoint.</p>
+            <a class="text-link" href="runbook.html">Open runbook</a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>These routes are protected by basic auth with demo credentials baked into nginx.</p>
+    </footer>
+
+    <button class="scroll-top" type="button" data-scroll-top hidden aria-label="Scroll back to top">Top</button>
+  </div>
+</body>
+</html>

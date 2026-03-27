@@ -56,11 +56,18 @@ const highlightCurrentNav = () => {
     return;
   }
 
-  const currentPath = window.location.pathname.split("/").pop() || "index.html";
+  const currentPath = window.location.pathname.replace(/\/$/, "/index.html");
 
   navLinks.forEach((link) => {
-    const href = (link.getAttribute("href") || "").split("/").pop();
-    link.classList.toggle("is-active", href === currentPath);
+    const explicitMatch = link.dataset.navMatch;
+    const href = new URL(link.getAttribute("href") || "", window.location.href)
+      .pathname
+      .replace(/\/$/, "/index.html");
+
+    link.classList.toggle(
+      "is-active",
+      explicitMatch ? currentPath.startsWith(explicitMatch) : href === currentPath,
+    );
   });
 };
 

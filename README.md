@@ -6,6 +6,7 @@ A small static FAQ portal about nginx, served by nginx and packaged as a Docker 
 
 - `site/` contains the interlinked HTML pages plus shared CSS and JavaScript.
 - `nginx.conf` provides the nginx runtime configuration for the container.
+- `basic-auth.htpasswd` stores the demo credentials used by the protected routes.
 - `Dockerfile` builds an image that serves the site on port `80`.
 - `.github/workflows/docker-publish.yml` builds the image in GitHub Actions and pushes it to GitHub Container Registry on `main`.
 
@@ -18,12 +19,29 @@ docker run --rm -p 8080:80 dummy-faq-portal
 
 Then visit `http://127.0.0.1:8080/`.
 
-## Pages
+## Main routes
 
-- `site/index.html` overview and navigation hub
-- `site/pages/configuration.html` searchable configuration FAQ
-- `site/pages/performance.html` searchable performance and proxy FAQ
-- `site/assets/search.js` shared JavaScript for scroll-to-top and live search
+- `/`
+- `/faq.html`
+- `/getting-started.html`
+- `/operations.html`
+- `/pages/configuration.html`
+- `/pages/performance.html`
+
+## Basic auth demo pages
+
+The protected section lives under `/private/` with hardcoded credentials:
+
+```text
+username: test
+password: test
+```
+
+Protected routes included in the image:
+
+- `/private/`
+- `/private/status.html`
+- `/private/runbook.html`
 
 ## Container image publishing
 
