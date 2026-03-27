@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dummy FAQ Portal | Private runbook</title>
-  <meta name="description" content="Private verification checklist protected by nginx basic auth.">
+  <title>Nginx Knowledge Base | Restricted runbook</title>
+  <meta name="description" content="Restricted verification checklist protected by nginx basic auth.">
   <link rel="stylesheet" href="../assets/styles.css">
   <script src="../assets/search.js" defer></script>
 </head>
 <body>
   <div class="page-shell">
     <header class="site-header">
-      <a class="brand" href="../index.html">Dummy FAQ Portal</a>
+      <a class="brand" href="../index.html">Nginx Knowledge Base</a>
       <nav class="site-nav" aria-label="Primary">
         <a href="../index.html">Home</a>
         <a href="../faq.html">FAQ</a>
@@ -23,14 +23,14 @@
 
     <main class="content">
       <section class="section">
-        <p class="eyebrow">Private runbook</p>
-        <h1>Verification checklist for the demo service</h1>
+        <p class="eyebrow">Restricted runbook</p>
+        <h1>Verification checklist for the knowledge base</h1>
         <ol class="step-list">
           <li>Open <code>/</code> and verify that the route map renders.</li>
           <li>Open <code>/faq.html</code>, <code>/getting-started.html</code>, and <code>/operations.html</code> directly and confirm they do not 404.</li>
           <li>Hit <code>/healthz</code> and verify that the response is <code>200 OK</code>.</li>
           <li>Open <code>/private/</code> and verify that nginx requests credentials.</li>
-          <li>Authenticate with <code>test/test</code> and confirm that <code>/private/status.html</code> and <code>/private/runbook.html</code> render normally.</li>
+          <li>Authenticate with valid credentials and confirm that <code>/private/status.html</code> and <code>/private/runbook.html</code> render normally.</li>
         </ol>
       </section>
     </main>

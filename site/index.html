@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dummy FAQ Portal | nginx reference home</title>
-  <meta name="description" content="A static nginx FAQ portal with public reference pages and demo pages protected by basic auth.">
+  <title>Nginx Knowledge Base | Reference home</title>
+  <meta name="description" content="A static nginx knowledge base with public reference pages and a restricted operator area.">
   <link rel="stylesheet" href="assets/styles.css">
   <script src="assets/search.js" defer></script>
 </head>
 <body>
   <div class="page-shell">
     <header class="site-header">
-      <a class="brand" href="index.html">Dummy FAQ Portal</a>
+      <a class="brand" href="index.html">Nginx Knowledge Base</a>
       <nav class="site-nav" aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="faq.html">FAQ</a>
@@ -24,11 +24,11 @@
     <main class="content">
       <section class="hero">
         <p class="eyebrow">Static nginx reference</p>
-        <h1>A finished dummy portal with the routes you expect.</h1>
+        <h1>Clear answers for the nginx routes operators reach first.</h1>
         <p class="lead">
-          This service exposes the public pages people reach for first:
+          This knowledge base exposes the public pages people reach for first:
           <code>/faq.html</code>, <code>/getting-started.html</code>, and
-          <code>/operations.html</code>. It also includes a protected demo area
+          <code>/operations.html</code>. It also includes a restricted area
           under <code>/private/</code>.
         </p>
         <div class="hero-actions">
@@ -52,7 +52,7 @@
           <article class="card">
             <p class="card-label">Getting started</p>
             <h3><code>/getting-started.html</code></h3>
-            <p>File layout, health checks, static hosting, and where the protected routes are mounted.</p>
+            <p>File layout, health checks, static hosting, and where restricted routes are mounted.</p>
             <a class="text-link" href="getting-started.html">Open getting started</a>
           </article>
           <article class="card">
@@ -62,10 +62,10 @@
             <a class="text-link" href="operations.html">Open operations</a>
           </article>
           <article class="card">
-            <p class="card-label">Protected demo</p>
+            <p class="card-label">Restricted</p>
             <h3><code>/private/</code></h3>
-            <p>Two demo pages behind basic auth. Credentials are intentionally simple for test scenarios.</p>
-            <a class="text-link" href="private/">Open protected section</a>
+            <p>Operator-only pages for status notes and verification checklists behind HTTP basic auth.</p>
+            <a class="text-link" href="private/">Open restricted area</a>
           </article>
         </div>
       </section>
@@ -82,11 +82,11 @@
           </p>
         </div>
         <div class="note-panel">
-          <h3>Demo credentials</h3>
+          <h3>Restricted operator routes</h3>
           <ul class="plain-list">
-            <li>Username: <code>test</code></li>
-            <li>Password: <code>test</code></li>
             <li>Protected paths: <code>/private/</code>, <code>/private/status.html</code>, <code>/private/runbook.html</code></li>
+            <li>Designed for teams that want a small public knowledge base plus a private operator section.</li>
+            <li>Health checks stay independent on <code>/healthz</code>.</li>
           </ul>
         </div>
       </section>
@@ -106,7 +106,7 @@
     </main>
 
     <footer class="site-footer">
-      <p>Built as a static nginx demo with direct HTML routes, shared assets, and a protected mini-section.</p>
+      <p>Built as a static nginx knowledge base with direct HTML routes, shared assets, and a restricted operator section.</p>
     </footer>
 
     <button class="scroll-top" type="button" data-scroll-top hidden aria-label="Scroll back to top">Top</button>

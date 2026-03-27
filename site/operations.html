@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dummy FAQ Portal | Operations and troubleshooting</title>
+  <title>Nginx Knowledge Base | Operations and troubleshooting</title>
   <meta name="description" content="Operations guide for nginx reloads, logs, health checks, and troubleshooting.">
   <link rel="stylesheet" href="assets/styles.css">
   <script src="assets/search.js" defer></script>
@@ -11,7 +11,7 @@
 <body>
   <div class="page-shell">
     <header class="site-header">
-      <a class="brand" href="index.html">Dummy FAQ Portal</a>
+      <a class="brand" href="index.html">Nginx Knowledge Base</a>
       <nav class="site-nav" aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="faq.html">FAQ</a>
@@ -28,7 +28,7 @@
         <p class="lead">
           This page focuses on the questions that appear right after first
           deployment: how to validate config, what to inspect when things break,
-          and how static routes and protected pages behave under nginx.
+          and how static routes and restricted pages behave under nginx.
         </p>
       </section>
 
@@ -67,12 +67,12 @@
 
           <article class="faq-item" data-search="basic auth 401 credentials private routes htpasswd">
             <p class="faq-meta">Auth</p>
-            <h3>How are the protected pages enforced?</h3>
+            <h3>How are the restricted pages enforced?</h3>
             <p>
               nginx uses a dedicated location block for <code>/private/</code>
               and checks credentials against an embedded
               <code>.htpasswd</code> file. Requests without valid credentials
-              receive the normal HTTP basic auth challenge.
+              receive the normal HTTP basic auth challenge before any content is returned.
             </p>
           </article>
 
@@ -92,7 +92,7 @@
             <p>
               TLS termination, upstream services, explicit readiness probes,
               structured logging, and externalized auth secrets are the next
-              practical steps once the dummy portal graduates from a static demo.
+              practical steps once the knowledge base graduates into a broader platform.
             </p>
             <a class="text-link" href="pages/performance.html">Open the performance deep dive</a>
           </article>
@@ -114,7 +114,7 @@
             <ul class="plain-list">
               <li><a href="faq.html">Searchable FAQ</a></li>
               <li><a href="getting-started.html">Getting Started</a></li>
-              <li><a href="private/">Protected demo</a></li>
+              <li><a href="private/">Restricted operator area</a></li>
             </ul>
           </div>
 
@@ -124,7 +124,7 @@
     </main>
 
     <footer class="site-footer">
-      <p>Protected pages live under <a href="private/">/private/</a> and are guarded by basic auth.</p>
+      <p>Restricted pages live under <a href="private/">/private/</a> and are guarded by HTTP basic auth.</p>
     </footer>
 
     <button class="scroll-top" type="button" data-scroll-top hidden aria-label="Scroll back to top">Top</button>

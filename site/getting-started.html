@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dummy FAQ Portal | Getting started with the demo</title>
-  <meta name="description" content="Getting started guide for the dummy nginx FAQ portal and its public routes.">
+  <title>Nginx Knowledge Base | Getting started</title>
+  <meta name="description" content="Getting started guide for the nginx knowledge base and its public routes.">
   <link rel="stylesheet" href="assets/styles.css">
   <script src="assets/search.js" defer></script>
 </head>
 <body>
   <div class="page-shell">
     <header class="site-header">
-      <a class="brand" href="index.html">Dummy FAQ Portal</a>
+      <a class="brand" href="index.html">Nginx Knowledge Base</a>
       <nav class="site-nav" aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="faq.html">FAQ</a>
@@ -24,7 +24,7 @@
     <main class="content">
       <section class="section">
         <p class="eyebrow">Getting started</p>
-        <h1>How this dummy service is structured.</h1>
+        <h1>How this nginx knowledge base is structured.</h1>
         <p class="lead">
           Use this page when you want the filesystem layout, public routes,
           health endpoint, and the reasoning behind the simple nginx setup.
@@ -55,14 +55,15 @@
           </article>
 
           <article class="faq-item" data-search="basic auth private status runbook credentials test test">
-            <p class="faq-meta">Protected demo pages</p>
-            <h3>Which pages require basic auth?</h3>
+            <p class="faq-meta">Restricted pages</p>
+            <h3>Which pages require authentication?</h3>
             <p>
-              The protected demo section is mounted at <code>/private/</code>.
-              The included protected pages are <code>/private/</code>,
+              The restricted section is mounted at <code>/private/</code>.
+              The included restricted pages are <code>/private/</code>,
               <code>/private/status.html</code>, and
-              <code>/private/runbook.html</code>. The hardcoded demo credentials
-              are <code>test/test</code>.
+              <code>/private/runbook.html</code>. Those routes are intended for
+              operator notes, internal checklists, and controlled access to
+              sensitive reference material.
             </p>
           </article>
 
@@ -116,7 +117,7 @@
             <ul class="plain-list">
               <li><a href="faq.html">Searchable FAQ</a></li>
               <li><a href="operations.html">Operations guide</a></li>
-              <li><a href="private/">Protected demo</a></li>
+              <li><a href="private/">Restricted operator area</a></li>
             </ul>
           </div>
 
