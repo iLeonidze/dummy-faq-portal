@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="FAQ page about nginx reverse proxying, compression, worker processes, and caching."
+    />
+    <title>dummy-faq-portal | nginx performance FAQ</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+    <script src="../assets/search.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="shell topbar">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark">N</span>
+          <span class="brand-copy">
+            <strong>dummy-faq-portal</strong>
+            <span>nginx performance FAQ</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <a href="../index.html">Overview</a>
+          <a href="configuration.html">Configuration</a>
+          <a href="performance.html">Performance</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="hero">
+        <div class="hero-card">
+          <div class="hero-copy">
+            <span class="eyebrow">Performance</span>
+            <h1>Proxying, caching, and sensible defaults.</h1>
+            <p>
+              This page focuses on the operational questions that come up after
+              the first deployment: reverse proxying, compression, worker sizing,
+              and browser cache behavior.
+            </p>
+          </div>
+          <aside class="hero-panel">
+            <p class="page-meta">Browse the full set</p>
+            <ul>
+              <li><a href="../index.html">Overview FAQ</a></li>
+              <li><a href="configuration.html">Configuration FAQ</a></li>
+              <li><a href="https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/" target="_blank" rel="noreferrer">Reverse proxy guide</a></li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section class="faq-layout">
+        <div class="faq-column">
+          <div class="section-heading">
+            <span class="eyebrow">Performance FAQ</span>
+            <h2>Proxying and efficiency</h2>
+          </div>
+
+          <article
+            class="faq-item"
+            data-search="reverse proxy upstream backend app server proxy pass load balancing"
+          >
+            <p class="faq-meta">Reverse proxy</p>
+            <h3>Why put nginx in front of an application server?</h3>
+            <p>
+              `nginx` can terminate client connections, serve static content, and
+              forward dynamic requests to upstream services. That lets the app
+              server focus on business logic while `nginx` handles the edge-facing
+              HTTP work.
+            </p>
+          </article>
+
+          <article
+            class="faq-item"
+            data-search="gzip compression brotli text assets css js html transfer size"
+          >
+            <p class="faq-meta">Compression</p>
+            <h3>Should static assets be compressed?</h3>
+            <p>
+              Usually yes for text-heavy assets such as HTML, CSS, JavaScript, and
+              SVG. `nginx` can gzip responses so browsers transfer fewer bytes.
+              Binary assets like JPEG and PNG generally see little benefit because
+              they are already compressed.
+            </p>
+          </article>
+
+          <article
+            class="faq-item"
+            data-search="worker processes auto worker connections tuning concurrency"
+          >
+            <p class="faq-meta">Workers</p>
+            <h3>What does worker_processes auto actually mean?</h3>
+            <p>
+              It lets `nginx` choose a worker count based on the available CPU
+              cores. That is a good baseline for general use because it avoids
+              hard-coding a number that only fits one machine shape.
+            </p>
+          </article>
+
+          <article
+            class="faq-item"
+            data-search="cache headers expires immutable browser caching static assets"
+          >
+            <p class="faq-meta">Caching</p>
+            <h3>How does browser caching help a static portal?</h3>
+            <p>
+              When browsers are allowed to reuse CSS and JavaScript assets, repeat
+              visits feel faster and the server handles fewer redundant downloads.
+              Cache directives need to match your deployment style so users still
+              pick up changed assets when you release an update.
+            </p>
+          </article>
+
+          <article
+            class="faq-item"
+            data-search="keepalive timeout tcp sendfile static files optimization"
+          >
+            <p class="faq-meta">Delivery path</p>
+            <h3>Which core settings show up often in performance discussions?</h3>
+            <p>
+              Settings such as `sendfile`, keepalive timeouts, worker connection
+              limits, and proxy buffering appear often because they shape how
+              efficiently `nginx` moves data between disk, network sockets, and
+              upstream services.
+            </p>
+          </article>
+
+          <article
+            class="faq-item"
+            data-search="where next load balancer upstream health tls docs"
+          >
+            <p class="faq-meta">Next steps</p>
+            <h3>What should I learn next for a real deployment?</h3>
+            <p>
+              After the basics, focus on TLS termination, upstream health and
+              failover behavior, cache strategy, and observability. Those topics
+              matter quickly once the server stops being just a static demo and
+              starts fronting real traffic.
+            </p>
+          </article>
+        </div>
+
+        <aside class="search-panel">
+          <label for="faq-search">Search performance topics</label>
+          <input
+            id="faq-search"
+            type="search"
+            placeholder="Try: gzip, reverse proxy, workers"
+            data-faq-search
+          />
+          <p class="search-status" data-search-status></p>
+
+          <div class="callout">
+            <p class="page-meta">Browse more pages</p>
+            <div class="related-links">
+              <a class="ghost-link" href="../index.html">Overview</a>
+              <a class="ghost-link" href="configuration.html">Configuration</a>
+            </div>
+          </div>
+
+          <div class="empty-state" data-empty-state hidden>
+            No performance entry matched. Try "proxy", "gzip", or "workers".
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="shell site-footer">
+      <p>This page complements the configuration guide with runtime-focused questions.</p>
+      <div class="footer-links">
+        <a href="../index.html">Overview</a>
+        <a href="configuration.html">Configuration</a>
+        <a href="https://docs.nginx.com/nginx/admin-guide/web-server/compression/" target="_blank" rel="noreferrer">
+          Compression guide
+        </a>
+      </div>
+    </footer>
+
+    <button class="scroll-top" type="button" data-scroll-top hidden aria-label="Scroll to top">
+      Top
+    </button>
+  </body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="FAQ page about nginx configuration, testing, reloads, and request routing."
+    />
+    <title>dummy-faq-portal | nginx configuration FAQ</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+    <script src="../assets/search.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="shell topbar">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark">N</span>
+          <span class="brand-copy">
+            <strong>dummy-faq-portal</strong>
+            <span>nginx configuration FAQ</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <a href="../index.html">Overview</a>
+          <a href="configuration.html">Configuration</a>
+          <a href="performance.html">Performance</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="hero">
+        <div class="hero-card">
+          <div class="hero-copy">
+            <span class="eyebrow">Configuration</span>
+            <h1>How nginx config fits together.</h1>
+            <p>
+              This page covers the pieces most people reach for first: config
+              file locations, `server` blocks, `location` rules, syntax checks,
+              and reloads.
+            </p>
+          </div>
+          <aside class="hero-panel">
+            <p class="page-meta">Quick route map</p>
+            <ul>
+              <li>Overview: <a href="../index.html">main page</a></li>
+              <li>Performance: <a href="performance.html">proxy and tuning</a></li>
+              <li>Reference: <a href="https://nginx.org/en/docs/" target="_blank" rel="noreferrer">nginx.org docs</a></li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section class="faq-layout">
+        <div class="faq-column">
+          <div class="section-heading">
+            <span class="eyebrow">Configuration FAQ</span>
+            <h2>Editing, routing, and reloads</h2>
+          </div>
+
+          <article
+            class="faq-item"
+            data-search="where config file nginx conf default path include conf d sites"
+          >
+            <p class="faq-meta">Files</p>
+            <h3>Where does nginx keep its main configuration?</h3>
+            <p>
+              The main file is commonly named `nginx.conf`. Its exact path depends
+              on how `nginx` was installed, but package-based Linux installs often
+              keep it under `/etc/nginx/`. That main file can include extra files
+              such as per-site or per-service configuration snippets.
+            </p>
+          </article>
+
+          <article
+            class="faq-item"
+            data-search="server block virtual host hostnames listen ports routing"
+          >
+            <p class="faq-meta">Server blocks</p>
+            <h3>What does a server block do?</h3>
+            <p>
+              A `server` block defines how `nginx` should respond for a given
+              hostname, port, or socket. This is the basic unit for hosting
+              multiple sites or APIs from the same instance.
+            </p>
+          </article>
+
+          <article
+            class="faq-item"
+            data-search="location matching exact prefix regex longest match request routing"
+          >
+            <p class="faq-meta">Request matching</p>
+            <h3>How do location rules decide where a request goes?</h3>
+            <p>
+              `nginx` evaluates `location` blocks according to its matching rules:
+              exact matches have priority, prefix matches are considered, and
+              regular expression locations are checked in their own stage. The
+              exact outcome depends on the combination of prefixes and regex rules,
+              so it is worth keeping those definitions simple and intentional.
+            </p>
+          </article>
+
+          <article
+            class="faq-item"
+            data-search="test config syntax nginx t reload command zero downtime"
+          >
+            <p class="faq-meta">Validation</p>
+            <h3>How should I validate and reload nginx safely?</h3>
+            <p>
+              A common operational pattern is to run `nginx -t` to validate the
+              syntax and then reload the process after the test passes. Reloading
+              tells the master process to apply the updated configuration without
+              dropping established traffic in the same way a hard restart would.
+            </p>
+          </article>
+
+          <article
+            class="faq-item"
+            data-search="access log error log observability troubleshooting request failures"
+          >
+            <p class="faq-meta">Observability</p>
+            <h3>Which logs matter first during troubleshooting?</h3>
+            <p>
+              Start with the access log to confirm request patterns and status
+              codes, then inspect the error log for parse problems, upstream
+              failures, permission issues, and module-related messages. Those two
+              logs solve a large share of first-line debugging cases.
+            </p>
+          </article>
+
+          <article
+            class="faq-item"
+            data-search="static root alias try files difference document root"
+          >
+            <p class="faq-meta">Static delivery</p>
+            <h3>When should I use root, alias, or try_files?</h3>
+            <p>
+              Use `root` when a URL path maps onto a directory tree. Use `alias`
+              when the request path needs to map to a different filesystem path.
+              Use `try_files` when you want `nginx` to check multiple candidate
+              files before returning a result or fallback response.
+            </p>
+            <p>
+              In this repo, the container uses a simple `root` plus `try_files`
+              setup to serve static HTML files directly.
+            </p>
+          </article>
+        </div>
+
+        <aside class="search-panel">
+          <label for="faq-search">Search configuration topics</label>
+          <input
+            id="faq-search"
+            type="search"
+            placeholder="Try: server block, nginx -t, logs"
+            data-faq-search
+          />
+          <p class="search-status" data-search-status></p>
+
+          <div class="callout">
+            <p class="page-meta">Related pages</p>
+            <div class="related-links">
+              <a class="ghost-link" href="../index.html">Overview</a>
+              <a class="ghost-link" href="performance.html">Performance</a>
+            </div>
+          </div>
+
+          <div class="empty-state" data-empty-state hidden>
+            No configuration entry matched. Try shorter terms like "reload" or "logs".
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="shell site-footer">
+      <p>Need more than the summary? Continue with the official docs or the performance FAQ.</p>
+      <div class="footer-links">
+        <a href="../index.html">Overview</a>
+        <a href="performance.html">Performance</a>
+        <a href="https://nginx.org/en/docs/beginners_guide.html" target="_blank" rel="noreferrer">
+          Beginner guide
+        </a>
+      </div>
+    </footer>
+
+    <button class="scroll-top" type="button" data-scroll-top hidden aria-label="Scroll to top">
+      Top
+    </button>
+  </body>
+</html>
